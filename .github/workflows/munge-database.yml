@@ -20,6 +20,7 @@ jobs:
           REPONAME: ${{ inputs.reponame  }}
           NEWRELEASE: ${{ inputs.newrelease }}
         run: |
+          sudo apt-get -y install libarchive-tools
           shopt -s nullglob
           curl -LO "https://github.com/${{ github.repository }}/releases/download/${NEWRELEASE}/${REPONAME}.db"
           ft="$(file "${REPONAME}.db")"
