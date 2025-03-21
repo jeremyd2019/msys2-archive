@@ -38,5 +38,6 @@ jobs:
             else
               echo "Unknown file type $ft" >&2 && exit 1
             fi > "../${REPONAME}.db"
+          cd ..
           gh release delete-asset -R '${{ github.repository }}' -y "${NEWRELEASE}" "${REPONAME}.db.sig" || true
           gh release upload -R '${{ github.repository }}' --clobber "${NEWRELEASE}" "${REPONAME}.db"
